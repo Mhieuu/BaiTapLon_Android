@@ -1,0 +1,55 @@
+// Firestore Security Rules
+// Đặt file này vào Firebase Console > Firestore > Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users collection - chỉ có chủ sở hữu có thể đọc/viết
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+
+    // Parent users - anonymous users
+    match /parent_users/{parentId} {
+      allow read, write: if request.auth.uid == parentId;
+    }
+
+    // Medicine schedules - elder có thể đọc/viết của mình, parent có thể đọc
+    match /medicine_schedules/{scheduleId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth.uid == resource.data.elderId;
+    }
+
+    // Medicine logs - ai cũng có thể viết, nhưng chỉ đọc của mình
+    match /medicine_logs/{logId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth.uid == resource.data.elderId;
+    }
+
+    // Checkin logs
+    match /checkin_logs/{checkinId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth.uid == resource.data.elderId;
+    }
+
+    // Alerts
+    match /alerts/{alertId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth.uid == resource.data.elderId;
+      allow update: if request.auth != null;
+    }
+
+    // Photos
+    match /photos/{photoId} {
+      allow create: if request.auth.uid == request.resource.data.elderId;
+      allow read: if request.auth != null;
+      allow update, delete: if request.auth.uid == resource.data.elderId;
+    }
+
+    // Elder status - update realtime
+    match /elder_status/{elderId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}
