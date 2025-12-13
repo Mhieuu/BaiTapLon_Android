@@ -310,7 +310,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.blue.withOpacity(0.4),
+                color: Colors.blue.withAlpha(102),
                 blurRadius: 40,
                 spreadRadius: 8,
                 offset: const Offset(0, 12),
@@ -379,8 +379,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+                  BoxShadow(
+                    color: Colors.black.withAlpha(13),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -429,7 +429,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
+                    color: Colors.black.withAlpha(20),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -469,7 +469,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           borderRadius: BorderRadius.circular(24.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withAlpha(20),
               blurRadius: 20,
               offset: const Offset(0, 4),
               spreadRadius: 0,
