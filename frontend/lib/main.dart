@@ -13,13 +13,17 @@ import 'viewmodels/checkin_viewmodel.dart';
 import 'app_con/screens/dashboard_screen.dart';
 import 'app_parent/screens/main_screen.dart';
 import 'screens/login_screen.dart';
+import 'config/app_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Khởi tạo services
-  await NotificationService().initialize();
-  await BackgroundService().initialize();
+  // Log mode (Mock hoặc Live)
+  AppConfig.logMode();
+  
+  // Khởi tạo services - Tạm comment để build nhanh hơn
+  // await NotificationService().initialize();
+  // await BackgroundService().initialize();
   
   runApp(const MyApp());
 }

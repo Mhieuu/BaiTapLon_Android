@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user.dart';
 import '../repositories/auth_repository.dart';
+import '../config/app_config.dart';
+import '../services/mock_data_service.dart';
 
 class AuthViewModel extends ChangeNotifier {
   final AuthRepository _repository = AuthRepository();
@@ -43,6 +45,34 @@ class AuthViewModel extends ChangeNotifier {
     
     try {
       print('🔄 [AUTH] Bắt đầu đăng nhập: $phoneNumber');
+      
+      // 🎭 MOCK MODE: Sử dụng dữ liệu demo
+      if (AppConfig.MOCK_MODE) {
+        await Future.delayed(const Duration(seconds: 1)); // Giả lập delay API
+        
+        if (phoneNumber == AppConfig.MOCK_CARER_PHONE) {
+          _currentUser = MockDataService.getMockCarer();
+          print('🎭 [AUTH] Mock login - Người cao tuổi: ${_currentUser!.name}');
+        } else if (phoneNumber == AppConfig.MOCK_PARENT_PHONE) {
+          _currentUser = MockDataService.getMockParent();
+          print('🎭 [AUTH] Mock login - Người thân: ${_currentUser!.name}');
+        } else {
+          print('❌ [AUTH] Số điện thoại không khớp với mock data');
+          _errorMessage = 'Số điện thoại không tồn tại.\n\nDemo:\n- Người cao tuổi: ${AppConfig.MOCK_CARER_PHONE}\n- Người thân: ${AppConfig.MOCK_PARENT_PHONE}';
+          notifyListeners();
+          return false;
+        }
+        
+        // Save to local storage
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString(_userKey, _currentUser!.id);
+        
+        print('✅ [AUTH] Mock đăng nhập thành công! User: ${_currentUser!.name}');
+        notifyListeners();
+        return true;
+      }
+      
+      // LIVE MODE: Gọi API thực
       final user = await _repository.login(phoneNumber);
       
       if (user != null) {

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import '../models/medication_schedule.dart';
 import '../repositories/medication_repository.dart';
+import '../config/app_config.dart';
+import '../services/mock_data_service.dart';
 
 class MedicationViewModel extends ChangeNotifier {
   final MedicationRepository _repository = MedicationRepository();
@@ -19,6 +21,16 @@ class MedicationViewModel extends ChangeNotifier {
     _setLoading(true);
     _errorMessage = null;
     try {
+      // 🎭 MOCK MODE: Sử dụng dữ liệu demo
+      if (AppConfig.MOCK_MODE) {
+        await Future.delayed(const Duration(milliseconds: 500));
+        _schedules = MockDataService.getMockMedicationSchedules();
+        print('🎭 [MEDICATION] Loaded ${_schedules.length} mock schedules');
+        notifyListeners();
+        return;
+      }
+      
+      // LIVE MODE: Gọi API thực
       _schedules = await _repository.getSchedulesByCarerId(carerId);
       notifyListeners();
     } catch (e) {

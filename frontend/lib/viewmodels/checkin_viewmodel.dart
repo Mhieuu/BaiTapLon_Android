@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import '../models/check_in.dart';
 import '../repositories/checkin_repository.dart';
+import '../config/app_config.dart';
+import '../services/mock_data_service.dart';
 
 class CheckInViewModel extends ChangeNotifier {
   final CheckInRepository _repository = CheckInRepository();
@@ -51,6 +53,18 @@ class CheckInViewModel extends ChangeNotifier {
     _setLoading(true);
     _errorMessage = null;
     try {
+      // 🎭 MOCK MODE: Sử dụng dữ liệu demo
+      if (AppConfig.MOCK_MODE) {
+        await Future.delayed(const Duration(milliseconds: 500));
+        _checkIns = MockDataService.getMockCheckIns();
+        // Sort by date descending
+        _checkIns.sort((a, b) => b.checkInTime.compareTo(a.checkInTime));
+        print('🎭 [CHECKIN] Loaded ${_checkIns.length} mock check-ins');
+        notifyListeners();
+        return;
+      }
+      
+      // LIVE MODE: Gọi API thực
       _checkIns = await _repository.getCheckInsByElderId(
         elderId,
         startDate: startDate,
