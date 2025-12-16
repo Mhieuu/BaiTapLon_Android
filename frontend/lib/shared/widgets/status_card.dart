@@ -37,8 +37,8 @@ class StatusCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(
               colors: [
-                color.withAlpha((0.1 * 255).round()),
-                color.withAlpha((0.05 * 255).round()),
+                color.withOpacity(0.1),
+                color.withOpacity(0.05),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -50,7 +50,7 @@ class StatusCard extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: color.withAlpha((0.2 * 255).round()),
+                  color: color.withOpacity(0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -86,7 +86,7 @@ class StatusCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: AppTheme.accentGreen.withAlpha((0.2 * 255).round()),
+                    color: AppTheme.accentGreen.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(

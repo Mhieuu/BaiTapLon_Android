@@ -398,7 +398,7 @@ class _LinkParentScreenState extends State<LinkParentScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.r),
                   side: BorderSide(
-                    color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+                    color: Theme.of(context).colorScheme.outline.withAlpha(26),
                     width: 1,
                   ),
                 ),
@@ -410,7 +410,7 @@ class _LinkParentScreenState extends State<LinkParentScreen> {
                       Container(
                         padding: EdgeInsets.all(12.w),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                          color: Theme.of(context).colorScheme.primary.withAlpha(26),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
@@ -453,11 +453,11 @@ class _LinkParentScreenState extends State<LinkParentScreen> {
               if (_linkedParent != null)
                 Card(
                   elevation: 0,
-                  color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
+                  color: Theme.of(context).colorScheme.primaryContainer.withAlpha(77),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.r),
                     side: BorderSide(
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                      color: Theme.of(context).colorScheme.primary.withAlpha(77),
                       width: 2,
                     ),
                   ),
@@ -530,11 +530,11 @@ class _LinkParentScreenState extends State<LinkParentScreen> {
               else if (_pendingRequest != null && _pendingRequest!['status'] == 'pending')
                 Card(
                   elevation: 0,
-                  color: Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.3),
+                  color: Theme.of(context).colorScheme.tertiaryContainer.withAlpha(77),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.r),
                     side: BorderSide(
-                      color: Theme.of(context).colorScheme.tertiary.withOpacity(0.3),
+                      color: Theme.of(context).colorScheme.tertiary.withAlpha(77),
                       width: 2,
                     ),
                   ),
@@ -566,7 +566,7 @@ class _LinkParentScreenState extends State<LinkParentScreen> {
                         Text(
                           'Vui lòng chờ phụ huynh xác nhận...',
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.7),
+                            color: Theme.of(context).colorScheme.onSurfaceVariant.withAlpha(179),
                             decoration: TextDecoration.none,
                           ),
                         ),

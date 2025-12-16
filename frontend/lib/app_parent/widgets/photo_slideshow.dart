@@ -95,16 +95,16 @@ class _PhotoSlideshowState extends State<PhotoSlideshow> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.white.withAlpha(26),
-            Colors.white.withAlpha(13),
+            Colors.white.withOpacity(0.1),
+            Colors.white.withOpacity(0.05),
           ],
         ),
         borderGradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.white.withAlpha(77),
-            Colors.white.withAlpha(26),
+            Colors.white.withOpacity(0.3),
+            Colors.white.withOpacity(0.1),
           ],
         ),
         child: const Center(
@@ -144,7 +144,7 @@ class _PhotoSlideshowState extends State<PhotoSlideshow> {
             Container(
               padding: EdgeInsets.all(20.w),
               decoration: BoxDecoration(
-                color: CupertinoColors.systemBlue.withAlpha(26),
+                color: CupertinoColors.systemBlue.withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -182,7 +182,7 @@ class _PhotoSlideshowState extends State<PhotoSlideshow> {
         borderRadius: BorderRadius.circular(24.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(38),
+            color: Colors.black.withOpacity(0.15),
             blurRadius: 20,
             offset: const Offset(0, 8),
             spreadRadius: 2,
@@ -247,7 +247,7 @@ class _PhotoSlideshowState extends State<PhotoSlideshow> {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                     decoration: BoxDecoration(
-                      color: Colors.black.withAlpha(77),
+                      color: Colors.black.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(20.r),
                     ),
                     child: Row(
@@ -263,7 +263,7 @@ class _PhotoSlideshowState extends State<PhotoSlideshow> {
                             borderRadius: BorderRadius.circular(4.r),
                             color: _currentIndex == index
                                 ? Colors.white
-                                : Colors.white.withAlpha(102),
+                                : Colors.white.withOpacity(0.4),
                           ),
                         ),
                       ),

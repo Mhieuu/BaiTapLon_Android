@@ -126,7 +126,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withAlpha(26),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Icon(
@@ -150,7 +150,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           icon: Container(
             padding: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+              color: Theme.of(context).colorScheme.error.withAlpha(26),
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Icon(
@@ -171,7 +171,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             icon: Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withAlpha(26),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Icon(
@@ -195,7 +195,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             icon: Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withAlpha(26),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Icon(
@@ -216,7 +216,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             icon: Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withAlpha(26),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Icon(
@@ -259,12 +259,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
                               child: Card(
-                                color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+                                color: Theme.of(context).colorScheme.error.withAlpha(26),
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.r),
                                   side: BorderSide(
-                                    color: Theme.of(context).colorScheme.error.withOpacity(0.3),
+                                    color: Theme.of(context).colorScheme.error.withAlpha(77),
                                   ),
                                 ),
                                 child: ListTile(
@@ -280,7 +280,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   subtitle: Text(
                                     medicationViewModel.errorMessage!,
                                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: Theme.of(context).colorScheme.error.withOpacity(0.8),
+                                      color: Theme.of(context).colorScheme.error.withAlpha(204),
                                       decoration: TextDecoration.none,
                                     ),
                                   ),
@@ -312,7 +312,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 Container(
                                   padding: EdgeInsets.all(8.w),
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                                    color: Theme.of(context).colorScheme.primary.withAlpha(26),
                                     borderRadius: BorderRadius.circular(10.r),
                                   ),
                                   child: Icon(
@@ -397,7 +397,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     Container(
                                       padding: EdgeInsets.all(8.w),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                                        color: Theme.of(context).colorScheme.primary.withAlpha(26),
                                         borderRadius: BorderRadius.circular(10.r),
                                       ),
                                       child: Icon(
@@ -478,20 +478,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            color.withOpacity(0.15),
-            color.withOpacity(0.08),
+            color.withAlpha(38),
+            color.withAlpha(20),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: color.withOpacity(0.3),
+          color: color.withAlpha(77),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.1),
+            color: color.withAlpha(26),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -503,7 +503,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Container(
             padding: EdgeInsets.all(10.w),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
+              color: color.withAlpha(51),
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: Icon(
@@ -568,7 +568,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         gradient: LinearGradient(
           colors: [
             Theme.of(context).colorScheme.primary,
-            Theme.of(context).colorScheme.primary.withOpacity(0.85),
+            Theme.of(context).colorScheme.primary.withAlpha(217),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -576,7 +576,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         borderRadius: BorderRadius.circular(24.r),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+            color: Theme.of(context).colorScheme.primary.withAlpha(102),
             blurRadius: 20,
             offset: const Offset(0, 8),
             spreadRadius: 2,
@@ -591,13 +591,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.white.withOpacity(0.3),
-                  Colors.white.withOpacity(0.2),
+                  Colors.white.withAlpha(77),
+                  Colors.white.withAlpha(51),
                 ],
               ),
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withAlpha(77),
                 width: 2,
               ),
             ),
@@ -622,7 +622,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     decoration: TextDecoration.none,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withAlpha(51),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),
