@@ -14,11 +14,12 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final _phoneController = TextEditingController();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
-  
+
   bool _isLogin = true;
   UserType _selectedType = UserType.carer;
   late AnimationController _animationController;
@@ -38,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.2),
       end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeOutCubic));
+    ).animate(CurvedAnimation(
+        parent: _animationController, curve: Curves.easeOutCubic));
     _animationController.forward();
   }
 
@@ -68,12 +70,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         _showError('Vui lòng nhập họ tên');
         return;
       }
-      if (_emailController.text.trim().isEmpty || !_emailController.text.contains('@')) {
+      if (_emailController.text.trim().isEmpty ||
+          !_emailController.text.contains('@')) {
         _showError('Vui lòng nhập email hợp lệ');
         return;
       }
     }
-    if (_phoneController.text.trim().isEmpty || _phoneController.text.length < 10) {
+    if (_phoneController.text.trim().isEmpty ||
+        _phoneController.text.length < 10) {
       _showError('Vui lòng nhập số điện thoại hợp lệ (ít nhất 10 số)');
       return;
     }
@@ -83,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     if (_isLogin) {
       final success = await authViewModel.login(_phoneController.text.trim());
       if (!mounted) return;
-      
+
       if (success) {
         final user = authViewModel.currentUser;
         if (user != null) {
@@ -95,7 +99,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             _navigateToHome(user.type);
           }
         } else {
-          _showError('Đăng nhập thành công nhưng không lấy được thông tin user');
+          _showError(
+              'Đăng nhập thành công nhưng không lấy được thông tin user');
         }
       } else {
         // Hiển thị lỗi nếu có
@@ -114,12 +119,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
       final success = await authViewModel.register(user);
       if (!mounted) return;
-      
+
       if (success) {
         final registeredUser = authViewModel.currentUser;
         if (registeredUser != null) {
           // Hiển thị thông báo thành công
-          _showSuccess('Đăng ký thành công!\nĐã lưu vào database.');
+          _showSuccess('Đăng ký thành công!');
           // Đợi 2 giây để user đọc thông báo, sau đó mới navigate
           await Future.delayed(const Duration(seconds: 2));
           if (mounted) {
@@ -154,7 +159,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -182,14 +188,15 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
   void _showSuccess(String message) {
     if (!mounted) return;
-    
+
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => PopScope(
         canPop: false,
         child: AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
           title: Row(
             children: [
               Container(
@@ -198,7 +205,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   color: Colors.green[50],
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.check_circle, color: Colors.green[700], size: 28.sp),
+                child: Icon(Icons.check_circle,
+                    color: Colors.green[700], size: 28.sp),
               ),
               Gap(12.w),
               Expanded(
@@ -236,7 +244,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 ),
                 child: Text(
                   'OK',
-                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -263,22 +272,22 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Gap(40.h),
-                    
+
                     // Logo Section
                     _buildLogoSection(),
-                    
+
                     Gap(50.h),
-                    
+
                     // Tab Selector
                     _buildTabSelector(),
-                    
+
                     Gap(40.h),
-                    
+
                     // Form Section
                     _buildFormSection(),
-                    
+
                     Gap(40.h),
-                    
+
                     // Footer
                     _buildFooter(),
                   ],
@@ -323,9 +332,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             color: Colors.white,
           ),
         ),
-        
+
         Gap(30.h),
-        
+
         // App Name
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -355,9 +364,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             ),
           ],
         ),
-        
+
         Gap(12.h),
-        
+
         // Subtitle
         Text(
           'Hệ thống Chăm sóc Người cao tuổi',
@@ -507,9 +516,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 ],
               ),
             ),
-            
+
             Gap(28.h),
-            
+
             // Form Fields
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 400),
@@ -528,13 +537,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   ),
                 );
               },
-              child: _isLogin
-                  ? _buildLoginFields()
-                  : _buildRegisterFields(),
+              child: _isLogin ? _buildLoginFields() : _buildRegisterFields(),
             ),
-            
+
             Gap(32.h),
-            
+
             // Submit Button
             Consumer<AuthViewModel>(
               builder: (context, authViewModel, child) {
@@ -566,7 +573,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                _isLogin ? Icons.arrow_forward : Icons.check_circle,
+                                _isLogin
+                                    ? Icons.arrow_forward
+                                    : Icons.check_circle,
                                 size: 22.sp,
                               ),
                               Gap(10.w),
@@ -679,7 +688,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           prefixIcon: Icon(Icons.people, size: 22.sp),
           labelText: 'Loại tài khoản',
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
         ),
         items: [
           DropdownMenuItem(

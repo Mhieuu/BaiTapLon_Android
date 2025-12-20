@@ -28,14 +28,20 @@ class CheckIn {
 
   factory CheckIn.fromJson(Map<String, dynamic> json) {
     final id = json['id']?.toString() ?? json['_id']?.toString() ?? '';
-    
+
     DateTime checkInTime;
     if (json['checkInTime'] is String) {
       checkInTime = DateTime.parse(json['checkInTime']);
     } else {
       checkInTime = json['checkInTime'] as DateTime;
     }
-    
+
+    // Đồng bộ múi giờ: API trả ISO-8601 có thể là UTC (có hậu tố Z)
+    // => chuyển về local để hiển thị đúng giờ trên thiết bị.
+    if (checkInTime.isUtc) {
+      checkInTime = checkInTime.toLocal();
+    }
+
     return CheckIn(
       id: id,
       medicationScheduleId: json['medicationScheduleId'] ?? '',
@@ -46,4 +52,3 @@ class CheckIn {
     );
   }
 }
-
